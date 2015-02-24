@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node server.js"
   },
-  "description": "Sample Express Application to test out using Package.json to install dependencies",
+  "description": "Sample Express Application chat rooms",
   "dependencies": {
     "basic-auth": "^1.0.0",
     "body-parser": "^1.12.0",

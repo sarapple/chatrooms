@@ -1,25 +1,12 @@
 var express 	= require("express"),							// Load the express module
 	app 		= express(),									// Express application now stored in 'app'
 	path 		= require('path'),                            	// path: contains the URL to your root
-	// config 		= require('./config/config'),    				// Path to mongoDB and other configurations
-	mongoose 	= require('mongoose'),               	// require mongoose module, which speaks between node and mongoDB
+	config 		= require('./config/config'),    				// Path to mongoDB and other configurations
+	mongoose 	= require('./config/mongoose'),               	// require mongoose module, which speaks between node and mongoDB
 	cookieParser= require('cookie-parser'),					
 	session 	= require('express-session'),
 	bodyParser 	= require('body-parser'),						// Handle post data-require bodyparser
 	auth 		= require('basic-auth');						// Authenticate passwords
-
-var uristring =
-process.env.MONGOLAB_URI ||
-process.env.MONGOHQ_URL ||
-'mongodb://localhost/chats';
-
-mongoose.connect(uristring, function (err, res) {
-  if (err) {
-  console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-  } else {
-  console.log ('Succeeded connected to: ' + uristring);
-  }
-});
 
 app.use(bodyParser.urlencoded({ extended: true }));				// Use Bodyparser for post data
 app.use(bodyParser.json());
@@ -45,6 +32,10 @@ console.log('**********                                                     ****
 console.log('*************************************************************************\n');
 });
 var io 			= require('socket.io').listen(server),				// Have io listen on same server
+	io.configure(function () {  
+	  io.set("transports", ["xhr-polling"]); 
+	  io.set("polling duration", 10); 
+	});
 	routes 		= require('./config/routes-ajax')(app),          	// Require routes files for ajax
 	socket 		= require('./config/routes-socket')(app, io);    	// Require routes files for socket.io
 

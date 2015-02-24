@@ -13,7 +13,7 @@ var notifier = {
 	};
 module.exports = {	//self creates db
 		development: {
-			db: 'mongodb://localhost/chat', //set url for the db
+			db: 'heroku_app34287904:Bu7bp9ug@ds047901.mongolab.com:47901/heroku_app34287904'
 			root: rootPath,
 			notifier: notifier,
 			app: {
