@@ -13,7 +13,7 @@ var notifier = {
 	};
 module.exports = {	//self creates db
 		development: {
-			db: 'sarapple:Bu7bp9ug.mongolab.com:47901/heroku_app34287904',
+			db: 'mongodb://admin:admin@ds047901.mongolab.com:47901/heroku_app34287904',
 			root: rootPath,
 			notifier: notifier,
 			app: {
@@ -21,7 +21,7 @@ module.exports = {	//self creates db
 			}
 		},
 		test: {
-			db: 'sarapple:Bu7bp9ug.mongolab.com:47901/heroku_app34287904', 
+			db: 'mongodb://admin:admin@ds047901.mongolab.com:47901/heroku_app34287904', 
 			root: rootPath,
 			notifier: notifier,
 			app:{
