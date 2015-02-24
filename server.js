@@ -32,10 +32,6 @@ console.log('**********                                                     ****
 console.log('*************************************************************************\n');
 });
 var io 			= require('socket.io').listen(server),				// Have io listen on same server
-	io.configure(function () {  
-	  io.set("transports", ["xhr-polling"]); 
-	  io.set("polling duration", 10); 
-	});
 	routes 		= require('./config/routes-ajax')(app),          	// Require routes files for ajax
 	socket 		= require('./config/routes-socket')(app, io);    	// Require routes files for socket.io
 
